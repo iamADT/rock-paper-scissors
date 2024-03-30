@@ -13,9 +13,20 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice(){
-    return prompt("Type your choice, Rock, Paper or Scissors", "rock");
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+function getPlayerChoice(e){
+    const buttonText = e.target.textContent;
+    console.log(buttonText.toLowerCase())
 }
+
+rock.addEventListener("click", getPlayerChoice);
+paper.addEventListener("click", getPlayerChoice);
+scissors.addEventListener("click", getPlayerChoice);
+
+
 
 
 // A function that plays a single round of rock paper scissors
@@ -44,5 +55,3 @@ function singleRound(playerSelection, computerSelection){
         return `An error has occured. Could not determine the winner. You typed in "${playerSelection}"`
     }
 }
-
-console.log(playGame());
