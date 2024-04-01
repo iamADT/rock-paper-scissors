@@ -1,31 +1,54 @@
 // A game that plays rock, paper scissors with the computer
 
+
+
+const rock = document.querySelector('.choiceButton[name="rock"]');
+const paper = document.querySelector('.choiceButton[name="paper"]');
+const scissors = document.querySelector('.choiceButton[name="scissors"]');
+const output = document.querySelector(".output")
+let playerSelection;
+let computerSelection;
+
 function getComputerChoice() {
     let value = Math.floor(Math.random() * 3) + 1;
     if(value===1){
+        const para = document.createElement('p')
+        para.textContent = `Computer selected rock`;
+        output.appendChild(para)
         return "rock";
     }
     else if (value ===2){
-        return "scissors"
-    }
-    else if (value === 3){
+        const para = document.createElement('p')
+        para.textContent = `Computer selected paper`;
+        output.appendChild(para)
         return "paper"
     }
+    else if (value === 3){
+        const para = document.createElement('p')
+        para.textContent = `Computer selected scissors`;
+        output.appendChild(para)
+        return "scissors"
+    }
 }
 
-const rock = document.querySelector(".rock");
-const paper = document.querySelector(".paper");
-const scissors = document.querySelector(".scissors");
+function playGame(event){
+    output.innerHTML='';
 
-function getPlayerChoice(e){
-    const buttonText = e.target.textContent;
-    console.log(buttonText.toLowerCase())
+    playerSelection = event.target.textContent.toLowerCase();
+    const para = document.createElement('p')
+    para.textContent = `You selected ${playerSelection}`;
+    output.appendChild(para)
+    
+    let computerSelection = getComputerChoice();
+    let gameResult = singleRound(playerSelection, computerSelection);
+    const resultPara = document.createElement('p');
+    resultPara.textContent = `${gameResult}. Select another choice to play again.`;
+    output.appendChild(resultPara);
 }
 
-rock.addEventListener("click", getPlayerChoice);
-paper.addEventListener("click", getPlayerChoice);
-scissors.addEventListener("click", getPlayerChoice);
-
+rock.addEventListener("click", playGame);
+paper.addEventListener("click", playGame);
+scissors.addEventListener("click", playGame);
 
 
 
