@@ -4,33 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="styles.css"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section>
-        <div>
-            <h1>Rock, Paper, Scissors</h1>
-            <h2>Play a Game of 5 with the Computer</h2>
-            <h3>Choose by clicking on any of the buttons below</h3>
-            <button id="startGame" name="startGame">Start Game</button>
-        </div>
-        <div>
-            <button class="choiceButton" name="rock" disabled>Rock</button>
-            <button class="choiceButton" name="paper" disabled>Paper</button>
-            <button class="choiceButton" name="scissors" disabled>Scissors</button>
+    <section class="game">
+        <header>
+            <h1 class="heading heading1">Rock, Paper, Scissors</h1>
+            <h2 class="heading heading2">Play a Game of 5 with the Computer</h2>
+            <h3 class="heading heading3">Choose by clicking on any of the buttons below</h3>
+        </header>
+            <button class="button" id="startGame" name="startGame">Start Game</button>
+        <div class="gameButtons">
+            <button class="button choiceButton" name="rock" disabled>Rock</button>
+            <button class="button choiceButton" name="paper" disabled>Paper</button>
+            <button class="button choiceButton" name="scissors" disabled>Scissors</button>
         </div>
         <div class="output"></div>
         <div id="score">
             <p>Computer Score: <span id="computerScore"></span></p>
             <p>Your Score: <span id="playerScore"></span></p>
+            <p>Game of 5 result: <span id="gameResultText"></span></p>
         </div>
         <div>
-            <p>Game of 5 result: <span id="gameResultText"></span></p>
-            <button id="reset" name="reset">Reset</button>
+            <button class="button" id="reset" name="reset">Reset</button>
         </div>
     </section>
 </body>

@@ -5,8 +5,8 @@ const paper = document.querySelector('.choiceButton[name="paper"]');
 const scissors = document.querySelector('.choiceButton[name="scissors"]');
 const reset = document.querySelector('#reset');
 const output = document.querySelector(".output");
-let playerScoreText = document.querySelector('#playerScore');
-let computerScoreText = document.querySelector('#computerScore');
+const playerScoreText = document.querySelector('#playerScore');
+const computerScoreText = document.querySelector('#computerScore');
 const gameResultText = document.querySelector('#gameResultText');
 
 let playerScore = 0;
@@ -33,7 +33,7 @@ function getComputerChoice() {
 // A function that plays a game of 5
 function playGame(event){
     reset.disabled = false;
-    output.innerHTML='';
+    output.textContent='';
 
     playerSelection = event.target.textContent.toLowerCase();
     let computerSelection = getComputerChoice();
@@ -91,19 +91,28 @@ function checkGameEnd(score){
 }
 
 //Listening for the user's activities
+function setButtonState(isDisabled) {
+    // Dynamically enable/disable game buttons
+    const buttons = [rock, paper, scissors, reset, startGame];
+    buttons.forEach(button => {
+        button.disabled = isDisabled;
+        if (button.id === 'startGame') {
+            button.disabled = !isDisabled;
+         }
+    });
+}
+
 startGame.addEventListener("click", ()=> {
-    rock.disabled = false;
-    paper.disabled = false;
-    scissors.disabled = false;
-    startGame.disabled = true;
+    setButtonState(false)
 })
 
 reset.addEventListener("click", ()=> {
-    rock.disabled = true;
-    paper.disabled = true;
-    scissors.disabled = true;
-    startGame.disabled = false;
-    reset.disabled = true;
+   setButtonState(true);
+    playerScoreText.textContent = '0';
+    computerScoreText.textContent = '0';
+    computerScore = 0;
+    playerScore = 0;
+    gameResultText.textContent = '';
 })
 
 rock.addEventListener("click", playGame);
